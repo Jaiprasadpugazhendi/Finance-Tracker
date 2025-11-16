@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern personal finance tracker with neon theme">
+    <title>Finance Tracker | Manage Your Money</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">💰</span>
+                    Finance<span class="highlight">Tracker</span>
+                </h1>
+                <p class="tagline">Take control of your financial future</p>
+            </div>
+        </header>
+
+        <!-- Dashboard Cards Section -->
+        <section class="dashboard">
+            
+            <!-- Balance Card -->
+            <div class="card balance-card" data-aos="fade-up">
+                <div class="card-header">
+                    <h2 class="card-title">Total Balance</h2>
+                    <span class="icon">💵</span>
+                </div>
+                <div class="balance-amount" id="totalBalance">$0.00</div>
+                <div class="balance-info">
+                    <div class="info-item income">
+                        <span class="label">Income</span>
+                        <span class="value" id="totalIncome">$0.00</span>
+                    </div>
+                    <div class="info-item expense">
+                        <span class="label">Expenses</span>
+                        <span class="value" id="totalExpense">$0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Transaction Card -->
+            <div class="card transaction-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <h2 class="card-title">Add Transaction</h2>
+                    <span class="icon">✨</span>
+                </div>
+                
+                <form id="transactionForm" class="transaction-form">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input 
+                            type="text" 
+                            id="description" 
+                            placeholder="e.g., Grocery shopping"
+                            required
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                placeholder="0.00"
+                                step="0.01"
+                                required
+                                min="0.01"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Choose...</option>
+                                <option value="Food">🍔 Food</option>
+                                <option value="Transport">🚗 Transport</option>
+                                <option value="Entertainment">🎮 Entertainment</option>
+                                <option value="Shopping">🛍️ Shopping</option>
+                                <option value="Bills">📄 Bills</option>
+                                <option value="Healthcare">🏥 Healthcare</option>
+                                <option value="Salary">💼 Salary</option>
+                                <option value="Freelance">💻 Freelance</option>
+                                <option value="Investment">📈 Investment</option>
+                                <option value="Other">📦 Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Transaction Type</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="type" value="income" required>
+                                <span class="radio-custom income-radio">Income</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="type" value="expense" required checked>
+                                <span class="radio-custom expense-radio">Expense</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span>Add Transaction</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- Transactions History Section -->
+        <section class="transactions-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="section-header">
+                <h2 class="section-title">Transaction History</h2>
+                <div class="section-actions">
+                    <button class="btn btn-secondary" id="exportBtn">
+                        <span>Export Data</span>
+                        <span class="btn-icon">📥</span>
+                    </button>
+                    <button class="btn btn-danger" id="clearAllBtn">
+                        <span>Clear All</span>
+                        <span class="btn-icon">🗑️</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="income">Income</button>
+                <button class="filter-btn" data-filter="expense">Expenses</button>
+            </div>
+
+            <!-- Transactions List -->
+            <div class="transactions-list" id="transactionsList">
+                <!-- Transactions will be dynamically inserted here -->
+                <div class="empty-state">
+                    <div class="empty-icon">📊</div>
+                    <h3>No transactions yet</h3>
+                    <p>Add your first transaction to get started!</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Built with 💜 by FinanceTracker | Your money, your control</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
